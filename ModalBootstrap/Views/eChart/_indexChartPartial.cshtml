@@ -1,0 +1,40 @@
+﻿@using System.Linq
+@model IEnumerable<ModalBootstrap.Models.eChart>
+
+<div id="_indexallchartsdiv">
+    <table class="table">
+        <tr>
+            <th>
+
+                @Ajax.ActionLink("All Charts", "Index", "eChart", new { id = "chartslink" }, new AjaxOptions { UpdateTargetId = "_indexallchartsdiv" })
+            </th>
+            <th>
+                @Html.ActionLink("PPO Charts", "Index")
+            </th>
+            <th>
+                @Html.ActionLink("DHMO Charts", "Index")
+            </th>
+            <th>
+                @Html.ActionLink("Dentical Charts", "Index")
+            </th>
+
+        </tr>
+
+        <tr>
+            <th>
+                @Html.ActionLink("Credit Chart", "Index")
+            </th>
+            <th>
+                @Html.ActionLink("Cash Chart", "Index")
+            </th>
+            <th>
+                @Html.ActionLink("Last 100 Charts", "Index")
+            </th>
+            <th>
+                @Html.ActionLink("First 100 Charts", "Index")
+            </th>
+
+        </tr>
+
+    </table>
+</div>

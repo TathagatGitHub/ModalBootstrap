@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ModalBootstrap.Models.Treatment>
+<div id="_indexTreatmentPastialDiv">
+    <p>
+
+        @Ajax.ActionLink("New", "Create", "Treatment", new { id = "privacyLink" }, new AjaxOptions { UpdateTargetId = "_indexTreatmentPastialDiv" })
+
+        @*
+            @Html.ActionLink("Create New", "Create", "Treatment")
+        *@
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TreatmentStatus)
+            </th>
+            @*
+    <th>
+        @Html.DisplayNameFor(model => model.InitialVisit)
+    </th>
+*@
+            <th>
+                @Html.DisplayNameFor(model => model.LastVisit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TreatmentNo)
+            </th>
+            <th></th>
+        </tr>
+
+        @if (Model != null)
+        {
+
+            foreach (var item in Model)
+            {
+                <tr> 
+   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TreatmentStatus)
+                    </td>
+        @*
+    <td>
+                    @Html.DisplayFor(modelItem => item.InitialVisit)
+                </td>
+*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastVisit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TreatmentNo)
+                    </td>
+                    <td>
+                       @* @Html.ActionLink("Show", "Edit", "Treatment",new { id = item.TreatmentNo })
+    @Ajax.ActionLink("Show", "AjaxEdit", "Treatment", new { id = "item.TreatmentNo" }, new AjaxOptions { UpdateTargetId = "_indexTreatmentPastialDiv" })*@
+                        @Ajax.ActionLink("Items", "IndexAjaxFromTreatmentList", "TreatmentItems", new { id = item.TreatmentNo }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "_indexTreatmentItemPastialDiv" })
+                       @*  | @Html.ActionLink("Details", "Details", new { id = item.TreatmentNo })
+    | @Html.ActionLink("Delete", "Delete", new { id = item.TreatmentNo })*@
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>

@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewBag.Title = "eChartHome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container">
+        <!-------->
+        <div id="content">
+            <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                <li class="active"><a href="#search" data-toggle="tab">Search</a></li>
+                <li><a href="#createupdatechart" data-toggle="tab">Create / Update - Chart</a></li>
+                <li><a href="#summary" data-toggle="tab">Summary</a></li>
+                <li><a href="#green" data-toggle="tab">Green</a></li>
+                <li><a href="#blue" data-toggle="tab">Blue</a></li>
+            </ul>
+            <div id="my-tab-content" class="tab-content">
+                @* Search Tab - Start here*@
+                    <div class="tab-pane active" id="search">
+                        <h3 class="text-success">@ViewBag.Message</h3>
+                   
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="panel panel-default" style="box-shadow: 10px 10px 5px grey">
+                                    <div class="panel-heading">
+                                        <h5>Search using these fields</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                        @Html.Partial("_searchChart")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="panel panel-primary" style="box-shadow: 10px 10px 5px grey">
+                                    <div class=" panel-heading">
+                                    <h5>Chart Lookups</h5>
+                                </div>
+                                    <div class="panel-body" style=" border-width:5px;">
+                                         @Html.Partial("_indexChartPartial") 
+                                                                             
+                                    </div>
+                                </div>
+                                <div class="panel panel-info" style="box-shadow: 10px 10px 5px grey">
+                                    <div class="panel-heading">
+                                        <h5>Create a new Chart.</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                        @Html.Partial("_createChartPartial")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+              @* Search Tab - ends here*@
+                @* Create / Update Tab - Start here*@
+                <div class="tab-pane" id="createupdatechart">
+                   @* <h3 class="text-success">Create a new chart!</h3>*@
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h5>Create a new Chart.</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                        @Html.Partial("_createChartPartial")
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+                @* Create / Update Tab - Ends here*@
+                <div id=""> </div>
+                <div class="tab-pane" id="summary">
+                    @* <h3 class="text-success">Create a new chart!</h3>*@
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h5>Patient Basic Details</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                     @*   @Html.Partial("_createTreatmentPartial")*@
+                                        @Html.Partial("_detailseChartPartial")
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h5>Tratments</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                        @*   @Html.Partial("_createTreatmentPartial")*@
+                                        @Html.Partial("_indexTreatmentsPartial")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* Create / Update Tab - Ends here*@
+                
+                <div class="tab-pane" id="green">
+                    <h1>Green</h1>
+                    <p>green green green green green</p>
+                </div>
+                <div class="tab-pane" id="blue">
+                    <h1>Blue</h1>
+                    <p>blue blue blue blue blue</p>
+                </div>
+            </div>
+        </div>
+        
+    </div> <!-- container -->
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap")
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+
+
+    $(function () {
+        
+        //Get the first tab in document and will assume will always use first one
+        var selectedTab = $(document).find('div[class^="tab-content"]').first();
+        
+        //Navigation button, select tab when button click.
+        $(".form-group").on('click', ':submit', function () {
+            var selected = selectedTab.tabs("option", "active");
+            
+            if (this.id == "btnMoveLeftTab") {
+                if (selected >= 1) {
+                    selectedTab.tabs("option", "active", selected - 1);
+                }
+            } else {
+                alert("ccc");
+                // Activate the third panel
+                $("#tabs").tabs("option", "active", 2);
+               // selectedTab.tabs("option", "active", selected + 1);
+            }
+        });
+
+        //Tab activated, only display next on first tab, and previous in last tab
+        selectedTab.tabs({
+            
+            activate: function (event, ui) {
+                alert("aaa");
+                var active = selectedTab.tabs("option", "active");
+                var selected = selectedTab.tabs("option", "active");
+
+                if (active == 0) {
+                    $("#btnMoveLeftTab").hide();
+                    alert("bbb");
+                } else if (selectedTab.find("li:not(li[style='display:none'])").size() - 1 == selected) {
+                    $("#btncreatechart").hide();
+                } else {
+                    $("#btnMoveLeftTab").show();
+                    $("#btncreatechart").show();
+                }
+
+            }
+        });
+        //First time loading hide the previous button
+        $("#btnMoveLeftTab").hide();
+
+    });
+    </script>
+    
+    

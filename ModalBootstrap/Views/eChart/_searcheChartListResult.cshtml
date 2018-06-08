@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ModalBootstrap.Models.eChart>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientBirthDate)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientLastName)
+        </td>
+               
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientBirthDate)
+        </td>
+       
+        <td>
+          
+            @Html.ActionLink("Details", "TabDetails", new { id = item.ChartNo })
+            
+        </td>
+    </tr>
+}
+
+</table>

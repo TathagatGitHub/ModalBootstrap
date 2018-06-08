@@ -1,0 +1,83 @@
+﻿@model ModalBootstrap.Models.TreatmentItems
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TreatmentItems</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Treatment.TreatmentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Treatment.TreatmentStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SURF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SURF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProcedureDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProcedureDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DDS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DDS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TreatmentItemsNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

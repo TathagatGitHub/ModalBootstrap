@@ -1,0 +1,59 @@
+﻿@model ModalBootstrap.Models.Treatment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Treatment</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.eChart.PatientFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eChart.PatientFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitialVisit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitialVisit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastVisit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastVisit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextVisit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextVisit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TreatmentNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

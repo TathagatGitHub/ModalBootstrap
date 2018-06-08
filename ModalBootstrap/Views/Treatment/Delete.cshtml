@@ -1,0 +1,65 @@
+﻿@model ModalBootstrap.Models.Treatment
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Treatment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.eChart.PatientFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eChart.PatientFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitialVisit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitialVisit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastVisit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastVisit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextVisit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextVisit)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

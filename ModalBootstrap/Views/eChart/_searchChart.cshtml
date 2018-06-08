@@ -1,0 +1,48 @@
+﻿@model ModalBootstrap.Models.eChart
+
+@using (Ajax.BeginForm("SearchAjax", "eChart", new AjaxOptions { UpdateTargetId = "ShowSearchResult" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>eChart</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ChartNo)
+            @Html.TextBoxFor(model =>model.ChartNo)
+        </div>
+        <div class="editor-field">
+            @Html.LabelFor(model =>model.PatientFirstName)
+       @*     @Html(model => model.PatientFirstName)*@
+            @Html.ValidationMessageFor(model => model.PatientFirstName)
+       @*     @(Html.Kendo().DatePicker().Name("datepicker"))*@
+        </div>
+        <div class="editor-field">
+            @Html.LabelFor(model => model.PatientLastName)
+            @Html.EditorFor(model => model.PatientLastName)
+            @Html.ValidationMessageFor(model => model.PatientLastName)
+        </div>
+        <div class="editor-field">
+            @Html.LabelFor(model => model.PatientBirthDate)
+            @Html.EditorFor(model => model.PatientBirthDate)
+            @Html.ValidationMessageFor(model => model.PatientBirthDate)
+        </div>
+        <p>
+            <input type="submit" value="Search" />
+        </p>
+    </fieldset>
+
+}
+
+<div id="ShowSearchResult">
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ProductName").kendoAutoComplete({
+            minLength: 1,
+            dataTextField: "ProductName",
+            suggest: true,
+            filter: "startswith",
+            dataSource: { serverFiltering: true, transport: { read: { url: "/Product/GetProducts/", dataType: "json", type: "POST" } } }
+        });
+    });
+</script>

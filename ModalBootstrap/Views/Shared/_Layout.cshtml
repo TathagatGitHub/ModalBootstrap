@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+             @*   @Html.ActionLink("Western Dental", "Index", "Home", null, new { @class = "navbar-brand" })*@
+            @Html.ActionLink("Western Dental", "Index", "Home", null, new { @class = "CreateNewHome_Icon" })
+              
+                
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav ">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("eChart", "eChartHome", "eChart")</li>
+                    <li>@Html.ActionLink("WDOS", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1" style="background-color:lavender;">
+                Column 1<br>
+            </div>
+            <div class="col-xs-9 col-sm-9">
+
+                <div class="container body-content">
+                    @RenderBody()
+                    <hr />
+                    <footer>
+                        <div class="container text-center">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="/">© 2015 Western Dental.</a></li>
+                                        <li>@Html.ActionLink("About US", "About", "Home")</li>
+                                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                        <li><a href="#">Terms of Service</a></li>
+                                        <li><a href="#">Privacy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+            <!-- Add clearfix for only the required viewport -->
+            <div class="clearfix visible-xs"></div>
+            <div class="col-md-2">
+            <div class="thumbnail text-center">
+                <h3>$39.99</h3>
+                <p>Special Offer! </p>
+                <a href="=#" class="btn btn-success" role="button"> Buy Now</a>
+            </div>
+                <hr />
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5 class="panel-heading">Hello.</h5>
+                </div>
+                <div class="panel-body">
+                    <i class="fa fa-camera-retro fa-lg"></i> fa-lg
+                    <i class="fa fa-database"></i>
+                </div>
+            </div>
+                </div>
+        </div>
+
+        </div>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/kendo")
+    @Styles.Render("~/Content/AwFontcss")
+    @RenderSection("scripts", required: false)
+
+    <div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            // Initialize numeric spinner input boxes
+            //$(".numeric-spinner").spinedit();
+
+            // Initalize modal dialog
+            // attach modal-container bootstrap attributes to links with .modal-link class.
+            // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+            $('body').on('click', '.modal-link', function (e) {
+                e.preventDefault();
+                $(this).attr('data-target', '#modal-container');
+                $(this).attr('data-toggle', 'modal');
+            });
+
+            // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+            $('body').on('click', '.modal-close-btn', function () {
+                $('#modal-container').modal('hide');
+            });
+
+            //clear modal cache, so that new content can be loaded
+            $('#modal-container').on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+
+            $('#CancelModal').on('click', function () {
+                return false;
+            });
+        });
+    </script>
+
+</body>
+
+</html>

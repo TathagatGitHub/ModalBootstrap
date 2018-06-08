@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ModalBootstrap.Models.TreatmentItems>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Treatment.TreatmentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LOC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SURF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProcedureDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DDS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Treatment.TreatmentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LOC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SURF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProcedureDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DDS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TreatmentItemsNo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TreatmentItemsNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TreatmentItemsNo })
+        </td>
+    </tr>
+}
+
+</table>

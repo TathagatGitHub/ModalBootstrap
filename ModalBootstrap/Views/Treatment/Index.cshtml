@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ModalBootstrap.Models.Treatment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.eChart.PatientFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreatmentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitialVisit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastVisit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NextVisit)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.eChart.PatientFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TreatmentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InitialVisit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastVisit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NextVisit)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TreatmentNo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TreatmentNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TreatmentNo })
+        </td>
+    </tr>
+}
+
+</table>

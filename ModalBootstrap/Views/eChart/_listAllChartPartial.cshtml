@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ModalBootstrap.Models.eChart>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientLastName)
+        </th>
+        @*
+    <th>
+        @Html.DisplayNameFor(model => model.PatientEmail)
+    </th>
+*@
+        <th>
+            @Html.DisplayNameFor(model => model.PatientPhoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientBirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppointmentDate)
+        </th>
+        @*
+    <th>
+        @Html.DisplayNameFor(model => model.PatientAddress)
+    </th>
+*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientLastName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.PatientEmail)
+            </td>
+            *@
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientPhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientBirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
+            </td>
+            @*
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientAddress)
+            </td>
+            *@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ChartNo }) |
+                @Html.ActionLink("Details", "TabDetails", new { id = item.ChartNo }) |
+                
+            </td>
+        </tr>
+    }
+
+</table>
